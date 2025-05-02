@@ -20,10 +20,13 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       env:
           ENV: development
+          GITHUB_WORKSPACE: /home/esp
       ports:
         - 80
         - 443
-      
+      volumes:
+        - my_docker_volume:/home/esp
+      options: --cpus 2
 
     steps:
     - uses: actions/checkout@v4
