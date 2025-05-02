@@ -15,11 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: esp32c6_latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
       env:
           ENV: development
       ports:
         - 80
         - 443
+      
 
     steps:
     - uses: actions/checkout@v4
